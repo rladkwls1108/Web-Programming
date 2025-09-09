@@ -1,0 +1,23 @@
+<!-- FIX: HTML5 표준 DOCTYPE -->
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- FIX(HTML): meta, title, style은 반드시 <head> 안에 와야 함
+       원본은 <body> 아래에 meta/title/style이 섞여 있었음 -->
+  <meta charset="utf-8">
+  <title>오류를 찾으세요</title>
+  <style>
+    /* FIX(CSS): 잘못된 선언 "text-align : center_color : darkred;"
+       → 두 속성으로 분리하여 올바르게 작성 */
+    h3  { text-align: center; color: darkred; }
+    span { color: blue; font-size: 20px; }
+  </style>
+</head>
+<body>
+  <!-- FIX(HTML): 잘못 닫힌 헤딩 태그(</h> 등) → 정확히 </h3>로 닫기 -->
+  <h3>Elvis Presley</h3>
+
+  He was an American singer and actor. In November 1956,
+  he is often referred to as "<span>the King of Rock and Roll</span>".
+</body>
+</html>
