@@ -17,6 +17,36 @@
     .section {
       margin: 20px 0;
     }
+    form {
+      margin-top: 20px;
+      padding: 15px;
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      width: 300px;
+    }
+    form label {
+      display: block;
+      margin: 10px 0 5px;
+    }
+    form input {
+      width: 100%;
+      padding: 8px;
+      box-sizing: border-box;
+      margin-bottom: 10px;
+    }
+    form button {
+      width: 100%;
+      padding: 10px;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    form button:hover {
+      background: #45a049;
+    }
   </style>
 </head>
 <body>
@@ -44,6 +74,17 @@
     <p>JavaScript: <meter value="0.5" min="0" max="1">50%</meter></p>
     <p>Python: <meter value="0.5" min="0" max="1">50%</meter></p>
     <p>C/C++: <meter value="0.5" min="0" max="1">50%</meter></p>
+
+    <!-- 이메일 & 비밀번호 입력 폼 -->
+    <form action="#" method="post">
+      <label for="email">이메일</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="password">패스워드</label>
+      <input type="password" id="password" name="password" required>
+
+      <button type="submit">로그인</button>
+    </form>
   </div>
 </body>
 </html>
