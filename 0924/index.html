@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>자기소개서</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <h1>자기소개서</h1> 
+    
+        <section id="my_info">
+            <h2>My info</h2> 
+            <img src="images/profile.jpg" alt="짱구의 얼굴 사진" />
+            <table>
+                <tbody>
+                    <tr id="myname">
+                        <th>이름</th>
+                        <td>김도이</td>
+                    </tr>
+                    <tr>
+                        <th>전공</th>
+                        <td>소프트웨어학과</td>
+                    </tr>
+                    <tr>
+                        <th>학번</th>
+                        <td>2022764057</td>
+                    </tr>
+                    <tr>
+                        <th>거주지</th>
+                        <td>부산</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+            
+        <section id="about">
+            <h2>About</h2>
+            <p>안녕하세요 소프트웨어학과를 전공하고 있는 학생입니다.</p>   
+        </section>
+        
+        <section id="contact">
+            <h2>Contact</h2>
+            <ul>
+                <li>
+                    <a href="tel:0100000000">010-000-0000</a>
+                </li>
+                <li>
+                    <a href="mailto:mail@mail.com" target="_blank">rladkwls1108@naver.com</a>
+                </li>
+            </ul>  
+        </section>
+        
+        <section id="skill">
+            <h2>Skills</h2>
+            <ul class="skills">
+                <li data-value="50">
+                    <label for="s-html">HTML</label>
+                    <meter id="s-html"></meter>
+                    <span class="skill-num"></span>
+                </li>
+                <li data-value="50">
+                    <label for="s-css">CSS</label>
+                    <meter id="s-css"></meter>
+                    <span class="skill-num"></span>
+                </li>
+                <li data-value="45">
+                    <label for="s-c">C</label>
+                    <meter id="s-c"></meter>
+                    <span class="skill-num"></span>
+                </li>
+                <li data-value="50">
+                    <label for="s-py">Python</label>
+                    <meter id="s-py"></meter>
+                    <span class="skill-num"></span>
+                </li>
+                <li data-value="50">
+                    <label for="s-js">JavaScript</label>
+                    <meter id="s-js"></meter>
+                    <span class="skill-num"></span>
+                </li>
+            </ul>
+        </section>
+        
+ <section id="project">
+  <h2>Projects</h2>
+  <ol>
+
+    <li>
+      <h3>좋아하는 아티스트 — 임윤찬 (Yunchan Lim)</h3>
+
+      <div class="embed-box">
+
+        <iframe
+          class="channel-frame"
+          src="https://www.youtube.com/@YunchanLim_"
+          title="Yunchan Lim YouTube Channel"
+          referrerpolicy="no-referrer"
+          loading="lazy">
+        </iframe>
+
+        <div class="embed-fallback">
+          유튜브 채널은 보안 정책으로 임베드가 차단될 수 있어요.<br>
+          아래 <strong>mysite</strong>를 눌러 채널로 이동하세요.
+        </div>
+      </div>
+
+      <p>피아니스트 임윤찬 채널을 소개합니다.</p>
+      <a href="https://www.youtube.com/@YunchanLim_" target="_blank" rel="noopener noreferrer">mysite</a>
+    </li>
+
+<li>
+  <h3>좋아하는 영상</h3>
+  <iframe
+    width="100%" height="315"
+    src="https://www.youtube.com/embed/rIFhybbjHiE"
+    title="Yunchan Lim - Favorite Video"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen
+    loading="lazy"
+    referrerpolicy="strict-origin-when-cross-origin">
+  </iframe>
+  <p></p>
+  <a href="https://www.youtube.com/watch?v=rIFhybbjHiE" target="_blank" rel="noopener noreferrer">mysite2.com</a>
+</li>
+  </ol>
+</section>
+
+
+    <script>
+    document.querySelectorAll('.skills li').forEach(li => {
+      const v = parseInt(li.dataset.value, 10) || 0;
+      const m = li.querySelector('meter');
+      const n = li.querySelector('.skill-num');
+      if (m) {
+        m.min = 0;
+        m.max = 100;
+        m.value = v;
+        m.setAttribute('aria-valuenow', v);
+      }
+      if (n) n.textContent = v + '%';
+    });
+    </script>
+</body>
+</html>
