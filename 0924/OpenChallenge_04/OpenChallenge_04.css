@@ -1,0 +1,36 @@
+@font-face {
+  font-family: '휴먼편지체';
+  src: url('휴먼편지체.TTF') format('truetype');
+}
+ 
+body{
+  background-color: aliceblue;
+}
+h1{
+ color:brown;
+ text-align: center; 
+}
+h3{
+  color : blue;
+  text-shadow: 2px 2px 5px skyblue;
+}
+a{
+  text-decoration: none;
+}
+ul{
+  border: dotted 1px black;
+}
+p{
+  text-indent: 1em;
+  font-size : 1em;
+  font-family: '휴먼편지체' , sans-serif;
+ 
+}
+header{
+  border-bottom: solid 1px black;
+}
+footer{
+  background-color: orange;
+  border-radius: 20px;
+  text-indent: 1em;
+}
