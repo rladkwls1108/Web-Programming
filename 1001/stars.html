@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>별(*) 출력 모양</title>
+</head>
+<body>
+<pre id="output"></pre>
+<script>
+    let n = 5;
+    let out = "";
+
+    out += "▶ 왼쪽 정렬 삼각형\n";
+    for (let i = 1; i <= n; i++) {
+        out += "*".repeat(i) + "\n";
+    }
+    out += "\n";
+
+    out += "▶ 오른쪽 정렬 삼각형\n";
+    for (let i = 1; i <= n; i++) {
+        out += " ".repeat(n - i) + "*".repeat(i) + "\n";
+    }
+    out += "\n";
+
+    out += "▶ 정삼각형\n";
+    for (let i = 1; i <= n; i++) {
+        out += " ".repeat(n - i) + "*".repeat(2 * i - 1) + "\n";
+    }
+    out += "\n";
+
+    out += "▶ 마름모\n";
+    for (let i = 1; i <= n; i++) {
+        out += " ".repeat(n - i) + "*".repeat(2 * i - 1) + "\n";
+    }
+    for (let i = n - 1; i >= 1; i--) {
+        out += " ".repeat(n - i) + "*".repeat(2 * i - 1) + "\n";
+    }
+
+    document.getElementById("output").innerText = out;
+</script>
+</body>
+</html>

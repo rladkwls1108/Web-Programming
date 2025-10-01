@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>윤년 판별 프로그램</title>
+</head>
+<body>
+<h3>윤년(leap year) 판별</h3>
+<hr>
+<script>
+    let year = prompt("년도를 입력하세요:", "");
+    year = parseInt(year);
+
+    // 산술, 비교, 논리, 조건 연산자를 모두 이용한 판별
+    let result = ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))
+                 ? (year + "년은 윤년(leap year)입니다.")
+                 : (year + "년은 평년(common year)입니다.");
+
+    document.write(result);
+</script>
+</body>
+</html>
