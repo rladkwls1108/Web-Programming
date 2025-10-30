@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>라면을 끓이는 순서</title>
+	<script>
+		function plus(){
+			var text=prompt("라면을 끓이는 순서를 입력하라.");
+			var ol = document.getElementsByTagName("ol")[0];
+			var newli = document.createElement("li");
+			newli.innerHTML = text;
+			ol.appendChild(newli);		}
+	</script>
+</head>
+<body>
+	<h3>라면을 끓이는 순서</h3>
+	<hr>
+	<ol type="A" style="background-color: yellowgreen;" onclick="plus()">
+		<li>물을 끓인다.</li>
+	</ol>
+</body>
+</html>
