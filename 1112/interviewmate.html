@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InterviewMate - 면접 연습 플랫폼</title>
+    <link rel="stylesheet" href="interviewmate.css"> 
+</head>
+<body>
+    <div class="modal hidden" id="loginModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="closeLogin">×</button>
+            <h2 class="modal-title">로그인</h2>
+            <form id="loginForm" class="auth-form">
+                <div class="form-group">
+                    <label>이메일</label>
+                    <input type="email" id="loginEmail" required placeholder="example@email.com">
+                </div>
+                <div class="form-group">
+                    <label>비밀번호</label>
+                    <input type="password" id="loginPassword" required placeholder="비밀번호를 입력하세요">
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">로그인</button>
+            </form>
+            <p class="auth-switch">
+                계정이 없으신가요? <a href="#" id="showSignupFromLogin">회원가입</a>
+            </p>
+        </div>
+    </div>
+
+    <div class="modal hidden" id="signupModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="closeSignup">×</button>
+            <h2 class="modal-title">회원가입</h2>
+            <form id="signupForm" class="auth-form">
+                <div class="form-group">
+                    <label>이름</label>
+                    <input type="text" id="signupName" required placeholder="이름을 입력하세요">
+                </div>
+                <div class="form-group">
+                    <label>이메일</label>
+                    <input type="email" id="signupEmail" required placeholder="example@email.com">
+                </div>
+                <div class="form-group">
+                    <label>비밀번호</label>
+                    <input type="password" id="signupPassword" required placeholder="6자 이상 입력하세요" minlength="6">
+                </div>
+                <div class="form-group">
+                    <label>비밀번호 확인</label>
+                    <input type="password" id="signupPasswordConfirm" required placeholder="비밀번호를 다시 입력하세요" minlength="6">
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">회원가입</button>
+            </form>
+            <p class="auth-switch">
+                이미 계정이 있으신가요? <a href="#" id="showLoginFromSignup">로그인</a>
+            </p>
+        </div>
+    </div>
+
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <span class="logo-icon">📝</span>
+                <span>InterviewMate</span>
+            </div>
+            <div class="header-actions">
+                <span class="user-name hidden" id="userName"></span>
+                <button class="btn btn-sm" id="loginBtn">로그인</button>
+                <button class="btn btn-sm btn-primary" id="signupHeaderBtn">회원가입</button>
+                <button class="theme-toggle" id="themeToggle">🌙</button>
+                <button class="btn btn-sm hidden" id="logoutBtn">로그아웃</button>
+            </div>
+        </div>
+    </header>
+
+    <nav class="nav-tabs">
+        <button class="tab-btn active" data-tab="practice">📝 면접 연습</button>
+        <button class="tab-btn" data-tab="history">📚 최근 답변</button>
+        <button class="tab-btn" data-tab="stats">📊 통계</button>
+    </nav>
+
+    <main class="main">
+        <div class="tab-content active" id="practiceTab">
+            <section class="control-bar">
+                <div class="control-row">
+                    <div class="control-group">
+                        <label class="control-label">분야</label>
+                        <select class="field-select" id="fieldSelect">
+                            <option value="all">전체</option>
+                            <option value="it">IT/컴퓨터</option>
+                            <option value="business">경영/경제</option>
+                            <option value="law">법학/행정</option>
+                            <option value="medical">의학/보건</option>
+                            <option value="science">자연과학</option>
+                            <option value="engineering">공학</option>
+                            <option value="humanities">인문학</option>
+                            <option value="arts">예체능</option>
+                            <option value="media">언론/미디어</option>
+                            <option value="social">사회과학</option>
+                        </select>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">난이도</label>
+                        <div class="btn-group">
+                            <button class="filter-btn easy active" data-difficulty="easy">초급</button>
+                            <button class="filter-btn medium" data-difficulty="medium">중급</button>
+                            <button class="filter-btn hard" data-difficulty="hard">고급</button>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">카테고리</label>
+                        <div class="btn-group">
+                            <button class="category-btn active" data-category="all">전체</button>
+                            <button class="category-btn" data-category="personality">인성</button>
+                            <button class="category-btn" data-category="major">전공</button>
+                            <button class="category-btn" data-category="situational">상황</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="control-row">
+                    <div class="control-group">
+                        <label class="control-label">타이머</label>
+                        <div class="inline-controls">
+                            <span class="timer-text" id="timer">00:00</span>
+                            <button class="btn-icon" id="startTimer">▶️</button>
+                            <button class="btn-icon" id="pauseTimer">⏸️</button>
+                            <button class="btn-icon" id="resetTimer">🔄</button>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">녹음</label>
+                        <div class="inline-controls">
+                            <button class="btn-icon" id="startRecord">🎤</button>
+                            <button class="btn-icon" id="stopRecord" disabled>⏹️</button>
+                            <span class="status-text" id="recordStatus">준비</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="two-column">
+                <div class="question-panel card">
+                    <div class="question-header">
+                        <span class="question-num" id="questionNum">질문 #1</span>
+                        <span class="badge easy" id="badge">초급</span>
+                    </div>
+                    <h2 class="question-text" id="questionText">다음 질문 버튼을 눌러 시작하세요</h2>
+                    <span class="category-tag" id="categoryTag">📌 시작하기</span>
+                    <div class="question-actions">
+                        <button class="btn btn-primary" id="nextBtn">다음 질문</button>
+                        <button class="btn btn-secondary" id="feedbackBtn">피드백</button>
+                    </div>
+                </div>
+
+                <div class="answer-panel card">
+                    <h3 class="panel-title">✍️ 답변 작성</h3>
+                    <textarea id="answerText" placeholder="여기에 답변을 작성하세요..."></textarea>
+                    <div class="answer-footer">
+                        <span class="char-count" id="charCount">0자</span>
+                        <button class="btn btn-primary" id="saveBtn">답변 저장</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="feedback-section card" id="feedbackSection" style="display: none;">
+                <h3 class="panel-title">🤖 피드백</h3>
+                <div class="feedback-content" id="feedbackContent"></div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="historyTab">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="panel-title">📚 최근 답변</h3>
+                    <button class="btn btn-sm" id="clearBtn" style="display: none;">전체 삭제</button>
+                </div>
+                <div class="history-list" id="historyList">
+                    <p class="empty">저장된 답변이 없습니다</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="statsTab">
+            <div class="stats-grid">
+                <div class="card stat-card">
+                    <div class="stat-icon">📝</div>
+                    <div class="stat-value" id="totalQuestions">0</div>
+                    <div class="stat-label">총 질문</div>
+                </div>
+                <div class="card stat-card">
+                    <div class="stat-icon">✍️</div>
+                    <div class="stat-value" id="totalAnswers">0</div>
+                    <div class="stat-label">답변 수</div>
+                </div>
+                <div class="card stat-card">
+                    <div class="stat-icon">⏱️</div>
+                    <div class="stat-value" id="avgTime">0:00</div>
+                    <div class="stat-label">평균 시간</div>
+                </div>
+                <div class="card stat-card">
+                    <div class="stat-icon">📊</div>
+                    <div class="stat-value" id="avgLength">0</div>
+                    <div class="stat-label">평균 길이</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3 class="panel-title">📊 카테고리별 진행률</h3>
+                <div class="progress-section">
+                    <div class="progress-item">
+                        <div class="progress-header">
+                            <span>인성 면접</span>
+                            <span id="personalityPct">0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="personalityBar"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-header">
+                            <span>전공 면접</span>
+                            <span id="majorPct">0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="majorBar"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-header">
+                            <span>상황 면접</span>
+                            <span id="situationalPct">0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="situationalBar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn btn-primary btn-block" id="exportBtn">📄 리포트 내보내기</button>
+        </div>
+    </main>
+
+    <script src="interviewmate.js"></script>
+</body>
+</html>
